@@ -16,13 +16,13 @@ stages{
     }
     stage('Tag docker image'){
         steps{
-            sh 'docker tag sayanexam sayan556/examrepo:new'
+            sh 'docker tag sayanexam sayan556/examrepo:today'
         }
         
     }
     stage('Push docker image'){
         steps{
-            sh 'docker push sayan556/examrepo:new'
+            sh 'docker push sayan556/examrepo:today'
         }
         
     }
