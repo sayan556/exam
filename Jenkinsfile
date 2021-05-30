@@ -3,7 +3,10 @@ agent any
 stages{
     stage('Docker login'){
         steps{
-            sh 'docker login -u sayan556 -p Sayanm15@'
+            withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'password', usernameVariable: 'username')]) {
+    // some block
+            sh 'docker login'
+            }
         }
         
     }
@@ -16,13 +19,13 @@ stages{
     }
     stage('Tag docker image'){
         steps{
-            sh 'docker tag sayanexam sayan556/examrepo:today'
+            sh 'docker tag sayanexam sayan556/today:newimage'
         }
         
     }
     stage('Push docker image'){
         steps{
-            sh 'docker push sayan556/examrepo:today'
+            sh 'docker push sayan556/today:newimage'
         }
         
     }
